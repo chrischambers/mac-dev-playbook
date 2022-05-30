@@ -22,6 +22,12 @@ sudoers_custom_config: ''
 #   # Allow users in admin group to use sudo with no password.
 #   %admin ALL=(ALL) NOPASSWD: ALL
 
+homebrew_uninstalled_packages:
+  - emacs
+
+homebrew_cask_uninstalled_apps:
+  - emacs
+
 homebrew_installed_packages:
   # Programming:
   # ----------------------------------------------------------------------
