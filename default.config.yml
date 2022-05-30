@@ -5,15 +5,40 @@ configure_osx: true
 
 # Set to 'true' to configure the Dock via dockutil.
 configure_dock: false
-dockitems_remove: []
-# - Launchpad
-# - TV
-# - Podcasts
-# - 'App Store'
-dockitems_persist: []
-# - name: "Sublime Text"
-#   path: "/Applications/Sublime Text.app/"
-#   pos: 5
+dockitems_remove:
+  - Launchpad
+  - Safari
+  - Messages
+  - Mail
+  - Maps
+  - Photos
+  - Facetime
+  - Calendar
+  - Contacts
+  - Reminders
+  - Notes
+  - TV
+  - Music
+  - Podcasts
+  - News
+  - Keynote
+  - Numbers
+  - Pages
+  # - 'App Store'
+
+dockitems_persist:
+  - name: "iTerm"
+    path: "/Applications/iterm.app"
+    pos: 1
+  - name: "Emacs"
+    path: "/opt/homebrew/Cellar/emacs-plus@29/29.0.50/Emacs.app/"
+    pos: 2
+  - name: "Brave"
+    path: "/Applications/Brave Browser.app"
+    pos: 3
+  - name: "Firefox"
+    path: "/Applications/Firefox Developer Edition.app"
+    pos: 4
 
 configure_sudoers: false
 sudoers_custom_config: ''
