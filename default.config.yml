@@ -131,21 +131,21 @@ homebrew_installed_packages:
   # - make
   # - cmake
 
-  # - asciidoc
+  # - asciidoc
   # - automake          # required for mailvelope
   # - filebrowser/tap/filebrowser
-  # - html2text
-  # - libiconv
-  # - libmetalink
-  # - libproxy
-  # - libscrypt
-  # - libvterm
-  # - libxml2
-  # - luajit
+  # - html2text
+  # - libiconv
+  # - libmetalink
+  # - libproxy
+  # - libscrypt
+  # - libvterm
+  # - libxml2
+  # - luajit
   # - mailutils
 
   # - poppler           # pdf manipulation. pdf-tools?
-  # - texinfo           # documentation format for GNU
+  # - texinfo           # documentation format for GNU
   # - transmission-cli  # torrent client
 
 homebrew_taps:
@@ -163,7 +163,7 @@ homebrew_taps:
 homebrew_cask_appdir: /Applications
 homebrew_cask_apps:
   - brave-browser
-  - firefox-developer-edition
+  - firefox-developer-edition        # didn't work
   - tor-browser
 
   - anki
