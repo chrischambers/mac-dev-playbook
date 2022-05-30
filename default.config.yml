@@ -2,9 +2,8 @@
 downloads: ~/.ansible-downloads/
 
 configure_osx: true
+configure_dock: true
 
-# Set to 'true' to configure the Dock via dockutil.
-configure_dock: false
 dockitems_remove:
   - Launchpad
   - Safari
@@ -74,6 +73,7 @@ homebrew_installed_packages:
   # ----------------------------------------------------------------------
   # - ansible # Installed via Pip.
   - chezmoi
+  - dockutil           # required for sorting dock
   - stow
 
   # Shell:
