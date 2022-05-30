@@ -23,37 +23,141 @@ sudoers_custom_config: ''
 #   %admin ALL=(ALL) NOPASSWD: ALL
 
 homebrew_installed_packages:
-  # - ansible # Installed via Pip.
-  - autoconf
-  - bash-completion
-  - doxygen
-  - gettext
-  - gifsicle
+  # Programming:
+  # ----------------------------------------------------------------------
+  - editorconfig
   - git
-  - github/gh/gh
-  - go
-  - gpg
+  # - node
+  - ormolu             # haskell formatter
+  - shellcheck         # shell script linter
+
+  ## Clojure:
+  # ----------------------------------------------------------------------
+  - clojure/tools/clojure
+  - leiningen
+  - exercism
+
+  # Dotfiles:
+  # ----------------------------------------------------------------------
+  # - ansible # Installed via Pip.
+  - chezmoi
+  - stow
+
+  # Shell:
+  # ----------------------------------------------------------------------
+  - zsh
+  - tmux
+  - starship
+
+  # CLI utils:
+  # ----------------------------------------------------------------------
+  - aria2              # file/torrent download
+  - bat
+  - coreutils          # essential GNU programs
+  - dos2unix
+  - fd
+  - ffmpeg             # video file manipulation
+  - fzf
+  - gnu-sed            # GNU sed (OSX bundled with BSD sed)
+  - jq
+  - neofetch           # swag
+  - pywhat
+  - rename
+  - ripgrep
+  - urlview
+  - vifm               # file browser w/ vim keys
+
+  ## http/download
+  # ----------------------------------------------------------------------
+  - curl
   - httpie
-  - iperf
-  - libevent
-  - sqlite
-  - mcrypt
-  - nmap
-  - node
-  - nvm
-  - php
-  - ssh-copy-id
-  - cowsay
-  - readline
-  - openssl
-  - pv
   - wget
-  - wrk
-  - zsh-history-substring-search
+
+  ## CLI browsers
+  # ----------------------------------------------------------------------
+  - lynx
+  - w3m
+
+  ## ls
+  # ----------------------------------------------------------------------
+  - broot
+  - exa
+  - lsd
+  - zoxide
+
+  ## top
+  # ----------------------------------------------------------------------
+  - bpytop
+  - htop
+
+  ## Improved help facilities
+  # ----------------------------------------------------------------------
+  - cheat
+  - tldr
+
+  # Writing:
+  # ----------------------------------------------------------------------
+  - aspell
+  - wordnet
+
+  # Editing:
+  # ----------------------------------------------------------------------
+  - d12frosted/emacs-plus/emacs-plus@29
+  - neovim
+  - ditaa
+  - plantuml
+  - watchexec         # performance improvement: emacs w/ straight
+
+  # Sandboxing:
+  # ----------------------------------------------------------------------
+  - direnv
+  - lxc
+  - pyenv
+  - rbenv
+
+  # Database:
+  # ----------------------------------------------------------------------
+  - postgresql
+
+  # Security:
+  # ----------------------------------------------------------------------
+  - pass
+  - pinentry-mac
+
+  # ??
+  # ----------------------------------------------------------------------
+  # - gcc
+  # - make
+  # - cmake
+
+  # - asciidoc
+  # - automake          # required for mailvelope
+  # - filebrowser/tap/filebrowser
+  # - html2text
+  # - libiconv
+  # - libmetalink
+  # - libproxy
+  # - libscrypt
+  # - libvterm
+  # - libxml2
+  # - luajit
+  # - mailutils
+
+  # - poppler           # pdf manipulation. pdf-tools?
+  # - texinfo           # documentation format for GNU
+  # - transmission-cli  # torrent client
 
 homebrew_taps:
+  # - homebrew/bundle
   - homebrew/core
   - homebrew/cask
+  - homebrew/cask-fonts
+  # - homebrew/cask-versions
+  # - homebrew/services
+  - clojure/tools
+  - d12frosted/emacs-plus
+  - dskecse/tap              # mozart 2
+  # - filebrowser/tap
 
 homebrew_cask_appdir: /Applications
 homebrew_cask_apps:
