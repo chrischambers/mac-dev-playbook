@@ -27,6 +27,7 @@ homebrew_installed_packages:
   # ----------------------------------------------------------------------
   - editorconfig
   - git
+  - subversion         # required for some of the font casks, and legacy codebases
   # - node
   - ormolu             # haskell formatter
   - shellcheck         # shell script linter
