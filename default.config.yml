@@ -30,6 +30,7 @@ homebrew_installed_packages:
   # - node
   - ormolu             # haskell formatter
   - shellcheck         # shell script linter
+  - yamllint
 
   ## Clojure:
   # ----------------------------------------------------------------------
