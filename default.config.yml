@@ -161,18 +161,43 @@ homebrew_taps:
 
 homebrew_cask_appdir: /Applications
 homebrew_cask_apps:
-  - chromedriver
-  - docker
+  - brave-browser
+  - firefox-developer-edition
+  - tor-browser
+
+  - anki
+  - calibre
+  - db-browser-for-sqlite
+  - discord
   - dropbox
-  - firefox
-  - google-chrome
-  - handbrake
+  - iterm2
+  - keyboard-maestro
+  - kindle
   - licecap
-  - sequel-ace
-  - slack
-  - sublime-text
-  - transmit
-  - vagrant
+  - mactex
+  # - meld
+  - mozart2
+  - racket
+  - soulseek
+  - steam
+  - transmission
+  - vlc
+
+  - font-et-book
+  - font-fira-code
+  - font-hack
+  - font-hack-nerd-font
+  - font-ibm-plex
+  - font-iosevka
+  - font-roboto-mono
+  - font-sauce-code-pro-nerd-font
+  - font-source-code-pro
+  - font-ubuntu
+
+  # - pycharm
+  # - textmate
+  # - vimr
+  # - visual-studio-code
 
 # See `geerlingguy.mas` role documentation for usage instructions.
 mas_installed_apps: []
