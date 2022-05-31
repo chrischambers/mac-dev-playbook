@@ -1,0 +1,26 @@
+---
+- name: Make sure emacsen directory is present
+  ansible.builtin.file:
+    path: "{{ emacsen_directory }}"
+    state: directory
+    mode: 0755
+
+- name: Ensure ~/.emacs.d does not already exist
+  ansible.builtin.file:
+    path: "{{ emacs_user_home }}/.emacs.d"
+    state: absent
+
+- name: Clone Chemacs into ~/.emacs.d
+  ansible.builtin.git:
+    repo: "{{ chemacs_repo }}"
+    dest: "{{ emacs_user_home }}/.emacs.d"
+
+- name: Clone Emacs configuration into ~/emacsen/mine
+  ansible.builtin.git:
+    repo: "{{ emacs_config_repo }}"
+    dest: "{{ emacsen_directory }}/mine"
+
+- name: Provide Chemacs profile via template
+  ansible.builtin.template:
+    src: emacs-profiles.el
+    dest: "{{ emacs_user_home }}/.emacs-profiles.el"

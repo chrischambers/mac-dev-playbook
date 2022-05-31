@@ -1,0 +1,5 @@
+(("default"   . ((user-emacs-directory . "{{ emacsen_directory}}/mine")))
+ ("spacemacs" . ((user-emacs-directory . "{{ emacsen_directory}}/spacemacs")))
+ ("prelude"   . ((user-emacs-directory . "{{ emacsen_directory}}/prelude")))
+ ("doom"      . ((user-emacs-directory . "{{ emacsen_directory}}/doom-emacs")
+                 (env .    (("DOOMDIR" . "{{ emacsen_directory}}/doom-emacs/doom.d"))))))
