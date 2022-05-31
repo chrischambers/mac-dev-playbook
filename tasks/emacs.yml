@@ -5,15 +5,16 @@
     state: directory
     mode: 0755
 
-- name: Ensure ~/.emacs.d does not already exist
-  ansible.builtin.file:
-    path: "{{ emacs_user_home }}/.emacs.d"
-    state: absent
+- name: Detect if Chemacs/an altnernative Emacs repo is already installed at ~/.emacs.d
+  ansible.builtin.stat:
+    path: "{{ emacs_user_home }}/.emacs.d/.git"
+  register: chemacs_git_folder
 
 - name: Clone Chemacs into ~/.emacs.d
   ansible.builtin.git:
     repo: "{{ chemacs_repo }}"
     dest: "{{ emacs_user_home }}/.emacs.d"
+  when: not chemacs_git_folder.stat.exists
 
 - name: Clone Emacs configuration into ~/emacsen/mine
   ansible.builtin.git:
