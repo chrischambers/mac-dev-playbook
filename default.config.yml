@@ -11,7 +11,7 @@ dockitems_remove:
   - Mail
   - Maps
   - Photos
-  - Facetime
+  - FaceTime
   - Calendar
   - Contacts
   - Reminders
@@ -23,21 +23,26 @@ dockitems_remove:
   - Keynote
   - Numbers
   - Pages
-  # - 'App Store'
 
 dockitems_persist:
-  - name: "iTerm"
-    path: "/Applications/iterm.app"
+  - name: iTerm
+    path: "/Applications/iTerm.app"
     pos: 1
-  - name: "Emacs"
-    path: "/opt/homebrew/Cellar/emacs-plus@29/29.0.50/Emacs.app/"
+  - name: Emacs
+    path: "/opt/homebrew/Cellar/emacs-plus@29/29.0.50/Emacs.app"
     pos: 2
-  - name: "Brave"
+  - name: "Brave Browser"
     path: "/Applications/Brave Browser.app"
     pos: 3
-  - name: "Firefox"
+  - name: "Firefox Developer Edition"
     path: "/Applications/Firefox Developer Edition.app"
     pos: 4
+  - name: "App Store"
+    path: "/System/Applications/App Store.app"
+    pos: 5
+  - name: "System Preferences"
+    path: "/System/Applications/System Preferences.app"
+    pos: 6
 
 configure_sudoers: false
 sudoers_custom_config: ''
@@ -73,7 +78,6 @@ homebrew_installed_packages:
   # ----------------------------------------------------------------------
   # - ansible # Installed via Pip.
   - chezmoi
-  - dockutil           # required for sorting dock
   - stow
 
   # Shell:
@@ -194,6 +198,8 @@ homebrew_taps:
 
 homebrew_cask_appdir: /Applications
 homebrew_cask_apps:
+  - hpedrorodrigues/tools/dockutil   # temporary cask: required for sorting dock
+
   - brave-browser
   - firefox-developer-edition        # didn't work
   - tor-browser
