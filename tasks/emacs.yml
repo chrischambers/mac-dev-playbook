@@ -5,7 +5,7 @@
     state: directory
     mode: 0755
 
-- name: Detect if Chemacs/an altnernative Emacs repo is already installed at ~/.emacs.d
+- name: Detect if Chemacs/another Emacs repo is already installed at ~/.emacs.d
   ansible.builtin.stat:
     path: "{{ emacs_user_home }}/.emacs.d/.git"
   register: chemacs_git_folder
