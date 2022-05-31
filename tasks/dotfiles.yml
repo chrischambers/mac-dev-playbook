@@ -1,0 +1,9 @@
+---
+- name: Check if dotfiles are already present
+  ansible.builtin.stat:
+    path: "{{ chezmoi_directory }}/.git"
+  register: dotfiles
+
+- name: Install dotfiles if not present
+  include_tasks: dotfiles_bootstrap.yml
+  when: not dotfiles.stat.exists

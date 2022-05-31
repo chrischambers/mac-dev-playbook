@@ -27,6 +27,14 @@
       when: configure_sudoers
       tags: ['sudoers']
 
+    - import_tasks: tasks/dotfiles.yml
+      when: configure_dotfiles
+      tags: ['dotfiles']
+
+    - import_tasks: tasks/emacs.yml
+      when: configure_emacs
+      tags: ['emacs']
+
     - import_tasks: tasks/osx.yml
       when: configure_osx
       tags: ['osx']

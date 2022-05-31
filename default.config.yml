@@ -4,6 +4,10 @@ downloads: ~/.ansible-downloads/
 configure_osx: true
 configure_dock: true
 
+dotfiles_repo: "https://github.com/chrischambers/dots.git"
+chezmoi_user_home: "{{ ansible_env.home }}"
+chezmoi_directory: "{{ chezmoi_user_home }}/.local/share/chezmoi"
+
 dockitems_remove:
   - Launchpad
   - Safari
