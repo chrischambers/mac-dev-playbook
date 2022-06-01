@@ -1,5 +1,5 @@
 *.vagrant
 .DS_Store
 *.retry
-roles*
+roles/elliotweiser.osx-command-line-tools
 config.yml
