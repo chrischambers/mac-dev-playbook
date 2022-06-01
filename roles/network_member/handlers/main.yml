@@ -1,0 +1,5 @@
+---
+- name: Trigger automount
+  become: true
+  become_user: root
+  ansible.builtin.command: automount -cv

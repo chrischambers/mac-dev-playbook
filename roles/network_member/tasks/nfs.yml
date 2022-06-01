@@ -1,0 +1,32 @@
+---
+- name: Setup /etc/auto_master to automount nfs share
+  # https://www.wdiaz.org/how-to-mount-nfs-share-on-mac/
+  tags:
+    - nfs
+    - never
+  become: true
+  become_user: root
+  ansible.builtin.lineinfile:
+    path: /etc/auto_master
+    regexp: "/-\\s+auto_nfs\\s+-nobrowse,nosuid"
+    backup: true
+    line: "/-\tauto_nfs\t-nobrowse,nosuid"
+    state: present
+
+- name: Setup /etc/auto_nfs
+  tags:
+    - nfs
+    - never
+  become: true
+  become_user: root
+  ansible.builtin.lineinfile:
+    path: "/etc/auto_nfs"
+    create: true
+    regexp: '{{ nfs_target_prefix }}/{{ item.target }}'
+    line: "{{ nfs_target_prefix }}/{{ item.target }}\t
+      -fstype=nfs,noowners,nolockd,resvport,hard,bg,intr,rw,tcp,nfc
+      nfs://{{ item.source }}"
+    state: present
+    backup: true
+  with_items: "{{ nfs_shares }}"
+  notify: Trigger automount

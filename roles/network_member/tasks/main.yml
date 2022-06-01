@@ -15,3 +15,6 @@
 
 - name: Debug {{ local_network }} variable
   import_tasks: debug.yml
+
+- name: NFS setup
+  import_tasks: nfs.yml
