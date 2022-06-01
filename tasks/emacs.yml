@@ -5,7 +5,7 @@
     state: directory
     mode: 0755
 
-- name: Detect if Chemacs/another Emacs repo is already installed at ~/.emacs.d
+- name: Chemacs/another Emacs repo already installed at ~/.emacs.d?
   ansible.builtin.stat:
     path: "{{ emacs_user_home }}/.emacs.d/.git"
   register: chemacs_git_folder
@@ -16,10 +16,16 @@
     dest: "{{ emacs_user_home }}/.emacs.d"
   when: not chemacs_git_folder.stat.exists
 
-- name: Clone Emacs configuration into ~/emacsen/mine
+- name: "Emacs config already exists at {{ emacs_config_location }}?"
+  ansible.builtin.stat:
+    path: "{{ emacs_config_location }}/.git"
+  register: emacs_config
+
+- name: "Clone Emacs configuration into {{ emacs_config_location }}"
   ansible.builtin.git:
     repo: "{{ emacs_config_repo }}"
-    dest: "{{ emacsen_directory }}/mine"
+    dest: "{{ emacs_config_location }}"
+  when: not emacs_config.stat.exists
 
 - name: Provide Chemacs profile via template
   ansible.builtin.template:
