@@ -15,6 +15,9 @@ chemacs_repo: "https://github.com/plexus/chemacs2.git"
 emacsen_directory: "{{ emacs_user_home }}/emacsen"
 emacs_config_repo: "git@github.com:chrischambers/emacs-latest.git"
 
+ebooks_source_directory: "{{ ansible_env.HOME }}/Dropbox/ebooks"
+ebooks_destination_path: "{{ ansible_env.HOME }}/Ebooks"
+
 dockitems_remove:
   - Launchpad
   - Safari
