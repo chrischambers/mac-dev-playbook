@@ -153,7 +153,7 @@ homebrew_installed_packages:
 
   # Editing:
   # ----------------------------------------------------------------------
-  - {name: "d12frosted/emacs-plus/emacs-plus@29", install_options: "with-imagemagick, with-modern-alecive-flatwoken-icon, with-native-comp, with-no-frame-refocus"}
+  - {name: "d12frosted/emacs-plus/emacs-plus@29", install_options: "with-imagemagick,with-modern-mzaplotnik-icon,with-native-comp,with-no-frame-refocus"}
   - neovim
   - ditaa
   - plantuml
