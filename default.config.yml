@@ -212,7 +212,7 @@ homebrew_cask_apps:
   - hpedrorodrigues/tools/dockutil   # temporary cask: required for sorting dock
 
   - brave-browser
-  - firefox-developer-edition        # didn't work
+  - firefox-developer-edition
   - tor-browser
 
   - anki

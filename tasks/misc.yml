@@ -1,0 +1,20 @@
+---
+- name: Dropbox synced and Ebooks folder present
+  ansible.builtin.stat:
+    path: ~/Dropbox/ebooks
+  register: dropbox_ebooks
+
+- name: ~/Ebooks folder already present
+  ansible.builtin.stat:
+    path: ~/Ebooks
+  register: ebooks_folder
+
+- name: Symlink Dropbox/ebooks to ~/Ebooks
+  ansible.builtin.file:
+    src: ~/Dropbox/ebooks
+    dest: ~/Ebooks
+    state: link
+  when: >
+    ebooks_folder.stat.symlink is not defined and
+    dropbox_ebooks.stat.isdir is defined and
+    dropbox_ebooks.stat.isdir
