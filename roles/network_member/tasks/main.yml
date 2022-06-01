@@ -1,0 +1,17 @@
+---
+# Heavily adapted from:
+# https://www.middlewareinventory.com/blog/ansible-update-etc-hosts-file-across-all-hosts/
+- name: Update /etc/hosts with members of network
+  tags: etc_hosts
+  become: true
+  become_user: root
+  lineinfile:
+    path: "/etc/hosts"
+    regexp: ".*\t{{ item.hostname }}"
+    line: "{{ item.address }}\t{{ item.hostname }}"
+    state: present
+    backup: true
+  with_items: "{{ local_network }}"
+
+- name: Debug {{ local_network }} variable
+  import_tasks: debug.yml

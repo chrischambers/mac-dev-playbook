@@ -1,0 +1,15 @@
+---
+# https://gryzli.info/2017/12/21/ansible-debug-print-variables/
+- name: Debugging output for {{ local_network }}
+  tags:
+    - debug
+    - never
+  vars:
+    msg: |
+      {{ local_network }}:   {{ local_network|to_nice_json }}
+      1st host hostname:   {{ local_network[0].hostname }}
+      1st host IP Address: {{ local_network[0].address }}
+      Introspect localhost hostvars:
+        {{ hostvars['127.0.0.1']['ansible_env']|to_nice_json }}
+  debug:
+    msg: "{{ msg.split('\n') }}"
