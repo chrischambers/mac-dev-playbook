@@ -1,0 +1,22 @@
+---
+### Restart macOS preferences
+#
+# Description:
+#
+#   This handler will kill the three primary macOS processes that need to be
+#   restarted after common defaults write commands Note that this does not start
+#   the processes, however, macOS restarts them automatically.
+#
+#   TODO: Find a module for working with macOS processes, the services module
+#   does not work on macOS.
+
+## system
+- name: restart Finder
+  shell: killall Finder
+  listen: "restart macos preferences"
+- name: restart Dock
+  shell: killall Dock
+  listen: "restart macos preferences"
+- name: restart SystemUIServer
+  shell: killall SystemUIServer
+  listen: "restart macos preferences"

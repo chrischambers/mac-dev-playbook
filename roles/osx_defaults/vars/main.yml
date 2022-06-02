@@ -67,6 +67,56 @@ defaults:
       key: 'showhidden'
       type: bool
       value: true
+  # Finder
+  - name: Set default Finder view style as list view
+    data:
+      domain: 'com.apple.finder'
+      key: 'FXPreferredViewStyle'
+      type: string
+      value: Nlsv
+  - name: Don't warn me when changing file extensions
+    data:
+      domain: 'com.apple.finder'
+      key: 'FXEnableExtensionChangeWarning'
+      type: bool
+      value: false
+  - name: Set new finder window opens in user home
+    data:
+      domain: 'com.apple.finder'
+      key: 'NewWindowTarget'
+      type: string
+      value: PfHm
+  - name: Set Finder's default search scope to current folder's contents
+    data:
+      domain: 'com.apple.finder'
+      key: 'FXDefaultSearchScope'
+      type: string
+      value: SCcf
+  - name: Show hidden files
+    data:
+      domain: 'com.apple.finder'
+      key: 'AppleShowAllFiles'
+      type: bool
+      value: true
+  - name: Show all file extensions
+    data:
+      domain: 'com.apple.finder'
+      key: 'AppleShowAllExtensions'
+      type: bool
+      value: true
+  - name: Enable path bar in Finder
+    data:
+      domain: 'com.apple.finder'
+      key: 'ShowPathbar'
+      type: bool
+      value: true
+  - name: Enable status bar in Finder
+    data:
+      domain: 'com.apple.finder'
+      key: 'ShowStatusBar'
+      type: bool
+      value: true
+
 
 dictionaries: []
 become_defaults: []
