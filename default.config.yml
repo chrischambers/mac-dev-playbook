@@ -52,12 +52,24 @@ dockitems_persist:
   - name: "Firefox Developer Edition"
     path: "/Applications/Firefox Developer Edition.app"
     pos: 4
+  - name: "Tor Browser"
+    path: "/Applications/Tor Browser.app"
+    pos: 5
+  - name: "Discord"
+    path: "/Applications/Discord.app"
+    pos: 6
+  - name: "Steam"
+    path: "/opt/homebrew/Caskroom/steam/4.0/Steam.app"
+    pos: 7
+  - name: "calibre"
+    path: "/Applications/calibre.app"
+    pos: 8
   - name: "App Store"
     path: "/System/Applications/App Store.app"
-    pos: 5
+    pos: 9
   - name: "System Preferences"
     path: "/System/Applications/System Preferences.app"
-    pos: 6
+    pos: 10
 
 configure_sudoers: false
 sudoers_custom_config: ''
