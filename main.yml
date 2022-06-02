@@ -22,6 +22,9 @@
       when: configure_dock
       tags: ['dock']
     - network_member
+    - role: osx_defaults
+      when: configure_osx
+      tags: ['osx']
 
   tasks:
     - import_tasks: tasks/sudoers.yml
@@ -35,10 +38,6 @@
     - import_tasks: tasks/emacs.yml
       when: configure_emacs
       tags: ['emacs']
-
-    - import_tasks: tasks/osx.yml
-      when: configure_osx
-      tags: ['osx']
 
     - import_tasks: tasks/extra-packages.yml
       tags: ['extra-packages']

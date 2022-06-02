@@ -1,0 +1,35 @@
+# Setup default preferences in macOS
+- name: Write macOS defaults
+  osx_defaults:
+    domain: "{{ item.data.domain }}"
+    key: "{{ item.data.key }}"
+    type: "{{ item.data.type | default(omit) }}"
+    array_add: "{{ item.data.array_add | default(false) }}"
+    value: "{{ item.data.value | default(omit) }}"
+    state: "{{ item.data.state | default(omit) }}"
+  with_items:
+    - "{{ defaults }}"
+  notify: "restart macos preferences"
+  # ignore_errors: true
+
+# There are some settings, like those in /library/ that require escalated
+# privileges:
+- name: Write macOS defaults with escalated privileges
+  osx_defaults:
+    domain: "{{ item.domain }}"
+    key: "{{ item.key }}"
+    type: "{{ item.type | default(omit) }}"
+    array_add: "{{ item.array_add | default(false) }}"
+    value: "{{ item.value | default(omit) }}"
+    state: "{{ item.state | default(omit) }}"
+  with_items:
+    - "{{ become_defaults }}"
+  notify: "restart macos preferences"
+  become: true
+  ignore_errors: true
+
+# Set two dimensional dict defaults through shell commands
+- name: Set two dimensional dict defaults through defaults write
+  command: defaults write '{{ item.domain }}' '{{ item.key }}' -{{ item.type }} {{ item.dict_string }}
+  with_items:
+    - "{{ dictionaries }}"

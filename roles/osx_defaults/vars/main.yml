@@ -1,0 +1,313 @@
+---
+defaults:
+  - name: Dark Interface
+    data:
+      domain: 'NSGlobalDomain'
+      key: 'AppleInterfaceStyle'
+      type: string
+      value: Dark
+  - name: Disable auto-correction
+    data:
+      domain: 'NSGlobalDomain'
+      key: 'NSAutomaticSpellingCorrectionEnabled'
+      type: bool
+      value: false
+  # Dock:
+  - name: Double clicking on App titlebar maximizes app window
+    data:
+      domain: 'com.apple.dock'
+      key: 'AppleActionOnDoubleClick'
+      type: string
+      value: Maximize
+  - name: Set Dock icon size in pixels
+    data:
+      domain: 'com.apple.dock'
+      key: 'tilesize'
+      type: float
+      value: 50
+  - name: Set magnified Dock icon size in pixels
+    data:
+      domain: 'com.apple.dock'
+      key: 'largesize'
+      type: float
+      value: 70
+  - name: Enable magnification on Dock
+    data:
+      domain: 'com.apple.dock'
+      key: 'magnification'
+      type: bool
+      value: true
+  - name: Auto-hide Dock
+    data:
+      domain: 'com.apple.dock'
+      key: 'autohide'
+      type: bool
+      value: true
+  - name: Show dock immediately on Dock edge mouseover (plist only)
+    data:
+      domain: 'com.apple.dock'
+      key: 'autohide-delay'
+      type: float
+      value: 0
+  - name: Set Dock hide and appear animations to my preferred speed (plist only)
+    data:
+      domain: 'com.apple.dock'
+      key: 'autohide-time-modifier'
+      type: float
+      value: 0.6
+  - name: Show app is running indicator dot
+    data:
+      domain: 'com.apple.dock'
+      key: 'show-process-indicators'
+      type: bool
+      value: true
+  - name: Indicate when all app windows are hidden by fading icon (plist only)
+    data:
+      domain: 'com.apple.dock'
+      key: 'showhidden'
+      type: bool
+      value: true
+
+dictionaries: []
+become_defaults: []
+
+## defaults:
+##   ## System Preferences: General -----------------------------------------------
+##
+##   - { domain: 'NSGlobalDomain', key: 'AppleInterfaceStyle', state: absent } # Set Menubar and Dock to Light UI
+##   - { domain: 'NSGlobalDomain', key: 'NSQuitAlwaysKeepsWindows', type: int, value: 1 } # Close windows when quitting an app
+##
+##   ## System Preferences: Dock --------------------------------------------------
+##
+##   - { domain: 'com.apple.dock', key: 'AppleActionOnDoubleClick', type: string, value: Maximize } # Double clicking on App titlebar maximizes app window
+##   - { domain: 'com.apple.dock', key: 'tilesize', type: float, value: 20 } # Set Dock icon size in pixels
+##   - { domain: 'com.apple.dock', key: 'largesize', type: float, value: 48 } # Set magnified Dock icon size in pixels
+##   - { domain: 'com.apple.dock', key: 'magnification', type: bool, value: true } # Enable magnification on Dock
+##   - { domain: 'com.apple.dock', key: 'size-immutable', type: bool, value: true } # Lock icon size  (plist only)
+##   - { domain: 'com.apple.dock', key: 'orientation', type: string, value: left } # Position Dock on the left side of the screen
+##   - { domain: 'com.apple.dock', key: 'pinning', type: string, value: start } # Pin Dock to start of the screen (plist only)
+##   - { domain: 'com.apple.dock', key: 'position-immutabl', type: bool, value: true } # Lock the Dock position (plist only)
+##   - { domain: 'com.apple.dock', key: 'minimize-to-application', type: bool, value: true } # Minimize app windows to application icon
+##   - { domain: 'com.apple.dock', key: 'autohide', type: bool, value: true } # Auto-hide Dock
+##   - { domain: 'com.apple.dock', key: 'autohide-delay', type: float, value: 0 } # Show dock immediately on Dock edge mouseover (plist only)
+##   - { domain: 'com.apple.dock', key: 'autohide-time-modifier',type: float, value: 0.4 } # Set Dock hide and appear animations to my preferred speed (plist only)
+##   - { domain: 'com.apple.dock', key: 'show-process-indicators', type: bool, value: true } # Show app is running indicator dot
+##   - { domain: 'com.apple.dock', key: 'showhidden', type: bool, value: true } # Indicate when all app windows are hidden by fading icon (plist only)
+##
+##   ## System Preferences: Mission Control ---------------------------------------
+##
+##   - { domain: 'com.apple.dock', key: 'mru-spaces', type: bool, value: false } # Do not automatically rearange spaces
+##   - { domain: 'com.apple.dock', key: expose-group-apps', type: int, value: 1 } # Group windows by application
+##
+##   ## System Preferences: Displays ----------------------------------------------
+##
+##   - { domain: 'com.apple.systemuiserver', key: 'NSStatusItem Visible com.apple.menuextra.airplay', type: bool, value: true } # Enable Airplay menubar item
+##
+##   ## System Preferences: Energy Saver ------------------------------------------
+##
+##   - { domain: 'com.apple.systemuiserver', key: 'NSStatusItem Visible com.apple.menuextra.battery', type: bool, value: true } # Enable Battery menu bar item
+##
+##   ## System Preferences: Keyboard ----------------------------------------------
+##
+##   - { domain: 'NSGlobalDomain', key: 'InitialKeyRepeat', type: int, value: 25 } # Set my prefered delay for key repeat
+##   - { domain: 'NSGlobalDomain', key: 'KeyRepeat', type: int, value: 2 } # Set key repeat to fast
+##   - { domain: 'NSGlobalDomain', key: 'ApplePressAndHoldEnabled', type: bool, value: true } # Character accents popup on, key repeate off (plist only)
+##
+##   ### System Preferences: Keyboard: Text
+##
+##   - { domain: 'NSGlobalDomain', key: 'NSAutomaticCapitalizationEnabled', type: bool, value: false } # Do not capitalize words automatically
+##   - { domain: 'NSGlobalDomain', key: 'NSAutomaticDashSubstitutionEnabled', type: bool, value: false } # Do not use smarty dashes
+##   - { domain: 'NSGlobalDomain', key: 'NSAutomaticQuoteSubstitutionEnabled', type: bool, value: false } # Do note use smarty quotes
+##
+##   ### System Preferences: Keyboard: Dictation
+##
+##   - { domain: 'com.apple.HIToolbox', key: 'AppleDictationAutoEnable', type: int, value: 1 } # Enable dictation
+##   - { domain: 'com.apple.SpeechRecognitionCore', key: 'AllowAudioDucking', type: bool, value: false } # Related to enable dictation
+##   - { domain: 'com.apple.assistant.support', key: 'Dictation Enabled', type: bool, value: false } # Enable dictation
+##   - { domain: 'com.apple.speech.recognition.AppleSpeechRecognition.prefs', key: 'DictationIMMasterDictationEnabled', type: bool, value: true } # Related to enable dictation
+##   - { domain: 'com.apple.speech.recognition.AppleSpeechRecognition.prefs', key: 'DictationIMPresentedOfflineUpgradeSuggestion', type: bool, value: true } # Related to enable dictation
+##   - { domain: 'com.apple.speech.recognition.AppleSpeechRecognition.prefs', key: 'KeywordOptional', type: float, value: "-1" } # Related to enable dictation
+##
+##   ## System Preferences: Trackpad ----------------------------------------------
+##
+##   ### System Preferences: Trackpad: Point & Click
+##
+##   - { domain: 'com.apple.AppleMultitouchTrackpad', key: 'TrackpadThreeFingerTapGesture', type: int, value: 2 } # Enable look up and data detectors for Mac trackpad
+##   - { domain: 'com.apple.driver.AppleBluetoothMultitouch.trackpad', key: 'TrackpadThreeFingerTapGesture', type: int, value: 2 } # Enable look up and data detectors for Bluetooth trackpad
+##   - { domain: 'NSGlobalDomain', key: 'ContextMenuGesture', type: bool, value: true } # Enable two finger tap as secondary/right mouse click
+##   - { domain: 'com.apple.AppleMultitouchTrackpad', key: 'TrackpadRightClick', type: bool, value: true } # Enable two finger tap as secondary/right mouse click on Mac trackpad
+##   - { domain: 'com.apple.driver.AppleBluetoothMultitouch.trackpad', key: 'TrackpadRightClick', type: bool, value: true } # Enable two finger tap as secondary/right mouse click on Bluetooth trackpad
+##   - { domain: 'com.apple.AppleMultitouchTrackpad', key: 'Clicking', type: int, value: 1 } # Enable tap to click on Mac trackpad
+##   - { domain: 'com.apple.driver.AppleBluetoothMultitouch.trackpad', key: 'Clicking', type: int, value: 1 } # Enable tap to click on Bluetooth trackpad
+##   - { domain: 'NSGlobalDomain', key: 'com.apple.trackpad.scaling', type: float, value: 0.6875 } # Set trackpad speed to default
+##
+##   ### System Preferences: Trackpad: Scroll & Zoom
+##
+##   - { domain: 'NSGlobalDomain', key: 'com.apple.swipescrolldirection', type: bool, value: true } # Enable natural scrolling
+##   - { domain: 'com.apple.AppleMultitouchTrackpad', key: 'TrackpadPinch', type: int, value: 1 } # Enable pinch to zoom on Mac trackpad
+##   - { domain: 'com.apple.driver.AppleBluetoothMultitouch.trackpad', key: 'TrackpadPinch', type: int, value: 1 } # Enable pinch to zoom on Bluetooth trackpad
+##   - { domain: 'com.apple.AppleMultitouchTrackpad', key: 'TrackpadTwoFingerDoubleTapGesture', type: int, value: 1 } # Enable two finger tap smart zoom on Mac trackpad
+##   - { domain: 'com.apple.driver.AppleBluetoothMultitouch.trackpad', key: 'TrackpadTwoFingerDoubleTapGesture', type: int, value: 1 } # Enable two finger tap smart zoom on Bluetooth trackpad
+##   - { domain: 'com.apple.AppleMultitouchTrackpad', key: 'TrackpadRotate', type: int, value: 1 } # Enable canvas rotating with Mac trackpad
+##   - { domain: 'com.apple.driver.AppleBluetoothMultitouch.trackpad', key: 'TrackpadRotate', type: int, value: 1 } # Enable canvas rotating with Bluetooth trackpad
+##
+##   ### System Preferences: Trackpad: More Gestures
+##
+##   - { domain: 'NSGlobalDomain', key: 'AppleEnableSwipeNavigateWithScrolls', type: bool, value: true } # Enable swipe between pages (two finger horizontal swipe)
+##   - { domain: 'com.apple.AppleMultitouchTrackpad', key: 'TrackpadFourFingerHorizSwipeGesture', type: int, value: 2 } # Enable four finger swipe between full screen apps or spaces on Mac trackpad
+##   - { domain: 'com.apple.driver.AppleBluetoothMultitouch.trackpad', key: 'TrackpadFourFingerHorizSwipeGesture', type: int, value: 2 } # Enable four finger swipe between full screen apps or spaces on Bluetooth trackpad
+##   - { domain: 'com.apple.AppleMultitouchTrackpad', key: 'TrackpadThreeFingerHorizSwipeGesture', type: int, value: 2 } # Enable three finger swipe between full screen apps or spaces on Mac trackpad
+##   - { domain: 'com.apple.driver.AppleBluetoothMultitouch.trackpad', key: 'TrackpadThreeFingerHorizSwipeGesture', type: int, value: 2 } # Enable three finger swipe between full screen apps or spaces on Bluetooth trackpad
+##   - { domain: 'com.apple.AppleMultitouchTrackpad', key: 'TrackpadTwoFingerFromRightEdgeSwipeGesture', type: int, value: 3 } # Enable open and close Notification Center with two finger swipe from the side of Mac trackpad
+##   - { domain: 'com.apple.driver.AppleBluetoothMultitouch.trackpad', key: 'TrackpadTwoFingerFromRightEdgeSwipeGesture', type: int, value: 3 } # Enable open and close Notification Center with two finger swipe from the side of Bluetooth trackpad
+##   - { domain: 'com.apple.dock', key: 'showMissionControlGestureEnabled', type: bool, value: true } # Enable toggle Mission Control with three finger swipe up
+##   - { domain: 'com.apple.dock', key: 'showAppExposeGestureEnabled', type: bool, value: true } # Enable toggle Mission Control with three finger swipe down on Mac trackpad
+##   - { domain: 'com.apple.dock', key: 'showLaunchpadGestureEnabled', type: bool, value: true } # Enable show Launchpad with four finger pinch
+##   - { domain: 'com.apple.dock', key: 'showDesktopGestureEnabled', type: bool, value: true } # Enable show Launchpad with five finger pinch
+##
+##   ## System Preferences: Sound -------------------------------------------------
+##
+##   - { domain: 'com.apple.systemuiserver', key: 'NSStatusItem Visible com.apple.menuextra.volume', type: bool, value: true } # Enable Volume menu bar item
+##
+##   ## System Preferences: App Store ---------------------------------------------
+##
+##   - { domain: 'com.apple.SoftwareUpdate', key: 'ScheduleFrequency', type: int, value: 1 } # Schedule Apple Software Update checking for new updates every day (plist only)
+##
+##   ## System Preferences: Network -----------------------------------------------
+##
+##   - { domain: 'com.apple.systemuiserver', key: 'NSStatusItem Visible com.apple.menuextra.airport', type: bool, value: true } # Enable Network menu bar item
+##   - { domain: 'com.apple.NetworkBrowser', key: 'BrowseAllInterfaces', type: bool, value: true } # Enable AirDrop over Ethernet (plist only)
+##   - { domain: 'com.apple.desktopservices', key: 'DSDontWriteNetworkStores', type: bool, value: true } # Stop creating .DS_store files on network storage (plist only)
+##
+##   ## System Preferences: Bluetooth ---------------------------------------------
+##
+##   - { domain: 'com.apple.systemuiserver', key: 'NSStatusItem Visible com.apple.menuextra.bluetooth', type: bool, value: true } # Enable Bluetooth menu bar item
+##
+##   ## System Preferences: Siri --------------------------------------------------
+##
+##   - { domain: 'com.apple.Siri', key: 'StatusMenuVisible', type: bool, value: true } # Enable Siri menubar item in Siri domain
+##   - { domain: 'com.apple.systemuiserver', key: 'StatusMenuVisible', type: bool, value: true } # Enable Siri menubar item in SystemUIServer domain
+##
+##   ## System Preferences: Date & Time: Clock ------------------------------------
+##
+##   - { domain: 'com.apple.systemuiserver', key: 'NSStatusItem Visible com.apple.menuextra.clock', type: bool, value: true } # Enable Clock menu bar item
+##   - { domain: 'com.apple.menuextra.clock', key: 'DateFormat', type: string, value: 'MMM d  h:mm ' } # Set date format to `Month day hour:minutes`
+##   - { domain: 'com.apple.menuextra.clock', key: 'FlashDateSeparators', type: bool, value: false } # Do not flash seperators
+##   - { domain: 'com.apple.menuextra.clock', key: 'IsAnalog', type: bool, value: false } # Digital clock
+##
+##   ## System Preferences: Time Machine ------------------------------------------
+##
+##   - { domain: 'com.apple.TimeMachine', key: 'DoNotOfferNewDisksForBackup', type: bool, value: true } # Do not ask to use external disks with TimeMachine (plist only)
+##
+##
+##   # Plist ======================================================================
+##   #
+##   # These preferences are set only as plists or outside of System Preferences
+##   #
+##
+##   ## Plist: Menu Bar -----------------------------------------------------------
+##
+##   - domain: 'com.apple.systemuiserver'
+##     key: 'menuExtras'
+##     type: array
+##     value:
+##       - '/System/Library/CoreServices/Menu Extras/Displays.menu' # Enable Airplay menubar item key
+##       - '/System/Library/CoreServices/Menu Extras/AirPort.menu' # Enable AirPort menubar item key
+##       - '/System/Library/CoreServices/Menu Extras/Battery.menu' # Enable battery menubar item key
+##       - '/System/Library/CoreServices/Menu Extras/Bluetooth.menu' # Enable Bluetooth menubar item key
+##       - '/System/Library/CoreServices/Menu Extras/Clock.menu' # Enable clock menubar item key
+##       - '/System/Library/CoreServices/Menu Extras/Volume.menu' # Enable volume menubar item key
+##
+##   ## Plist: Screen Capture -----------------------------------------------------
+##   - { domain: 'com.apple.screencapture', key: 'type', type: string, value: png } # Set screencapture format to png
+##   - { domain: 'com.apple.screencapture', key: 'disable-shadow', type: bool, value: true } # Disable drop shadow on screenshots
+##   - { domain: 'com.apple.screencapture', key: 'location', type: string, value: '~/Documents/Action' } # Save screenshots to Action
+##
+##   ## Plist: UI -----------------------------------------------------------------
+##
+##   - { domain: 'NSGlobalDomain', key: 'NSNavPanelExpandedStateForSaveMode', type: bool, value: true } # Expand save dialog by default
+##   - { domain: 'NSGlobalDomain', key: 'NSNavPanelExpandedStateForSaveMode2', type: bool, value: true } # Expand save dialog by default second key
+##   - { domain: 'NSGlobalDomain', key: 'PMPrintingExpandedStateForPrint', type: bool, value: true } # Expand printing preferences
+##   - { domain: 'NSGlobalDomain', key: 'PMPrintingExpandedStateForPrint2', type: bool, value: true } # Expand printing preferences
+##   - { domain: 'com.apple.finder', key: 'CreateDesktop', type: string, value: false } # Disable icons on Desktop
+##   - { domain: 'com.apple.dock', key: 'expose-animation-duration', type: float, value: 0.1 } # Set Mission Control animations to be faster than default in macOS versions earlier than Sierra
+##   - { domain: 'NSGlobalDomain', key: 'NSWindowResizeTime', type: float, value: 0.001 } # Speeds up how quickly Cocoa apps redraw the window size while dragging
+##
+##
+##   # Apple App ==================================================================
+##   #
+##   # Preferences for Apple apps that are typically set within their preferences
+##   #
+##
+##   ## Apple App: Finder ---------------------------------------------------------
+##
+##   - { domain: 'com.apple.finder', key: 'FXPreferredViewStyle', type: string, value: Nlsv } # Set default Finder view style as list view
+##   - { domain: 'com.apple.finder', key: 'FXEnableExtensionChangeWarning', type: bool, value: false } # Don't warn me when changing file extensions
+##   - { domain: 'com.apple.finder', key: 'NewWindowTarget', type: string, value: PfHm } # Set new finder window opens in user home
+##   - { domain: 'com.apple.finder', key: 'NewWindowTargetPath', type: string, value: 'file://${HOME}' } # This gets overridden in Sierra, set it anyway incase it's fixed
+##   - { domain: 'com.apple.finder', key: 'FXDefaultSearchScope', type: string, value: SCcf } # Set Finder's default search scope to current folder's contents
+##   - { domain: 'com.apple.finder', key: 'AppleShowAllFiles', type: bool, value: true } # Show hidden files
+##   - { domain: 'com.apple.finder', key: 'AppleShowAllExtensions', type: bool, value: true } # Show all file extensions
+##   - { domain: 'com.apple.finder', key: 'ShowPathbar', type: bool, value: true } # Enable path bar in Finder
+##   - { domain: 'com.apple.finder', key: 'ShowStatusBar', type: bool, value: true } # Enable status bar in Finder
+##
+##   ## Apple App: Photos ---------------------------------------------------------
+##
+##   - { domain: 'com.apple.CloudPhotosConfiguration', key: 'com.apple.photo.icloud.cloudphoto', type: int, value: 1 } # Enable iCloud Photo Library
+##   - { domain: 'com.apple.CloudPhotosConfiguration', key: 'com.apple.photo.icloud.myphotostream', type: int, value: 0 } # Disable iCloud Photo Stream
+##
+##   ## Apple App: Safari ---------------------------------------------------------
+##
+##   ### Apple App: Safari: General
+##   - { domain: 'com.apple.Safari', key: 'NewTabBehavior', type: int, value: 4 } # New tab opens with Favorites
+##   - { domain: 'com.apple.Safari', key: 'NewWindowBehavior', type: int, value: 4 } # New window opens with Favorites
+##
+##   ### Apple App: Safari: Privacy
+##   - { domain: 'com.apple.Safari', key: 'SendDoNotTrackHTTPHeader', type: int, value: 1 } # Ask websites not to track me
+##
+##   ### Apple App: Safari: Advanced
+##   - { domain: 'com.apple.Safari', key: 'IncludeDevelopMenu', type: bool, value: true } # Enable Develop menu in Safari
+##
+##   ### Apple App: Safari: Plist
+##   - { domain: 'com.apple.Safari', key: 'ShowSidebarInTopSites', type: bool, value: false } # Do not show sidebar in Top Sites
+##   - { domain: 'com.apple.Safari', key: 'IncludeInternalDebugMenu', type: bool, value: true } # Enable Debug menu in Safari
+##   - { domain: 'com.apple.Safari', key: 'WebKitDeveloperExtrasEnabledPreferenceKey', type: bool, value: true } # Enable web developer tools
+##   - { domain: 'com.apple.Safari', key: 'com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled', type: bool, value: true } # Enable web developer tools second key
+##   - { domain: 'NSGlobalDomain', key: 'WebKitDeveloperExtras', type: bool, value: true } # Enable WebKit developer extras in WebViews
+##
+##   ## Apple App: TextEdit -------------------------------------------------------
+##
+##   - { domain: 'com.apple.TextEdit', key: 'RichText', type: int, value: 0 } # Set TextEdit to create new files as plain text by default (plist only)
+##
+##
+## # Elevated Defaults ============================================================
+## #
+## # These defaults need to be set with escalated privileges, primarily anything that needs to set a key in a /Library/Preferences/ domain
+## #
+## become_defaults:
+##
+##   ## Elevated Defaults: Security & Privacy -------------------------------------
+##
+##   - { domain: '/Library/Preferences/com.apple.alf', key: 'globalstate', type: int, value: 1 } # Turn on Firewall
+##
+##   ## Elevated Defaults: Plist: Login -------------------------------------------
+##   - { domain: '/Library/Preferences/com.apple.loginwindow', key: 'LoginwindowText', type: string, value: 'chris@christopherdwhite.com | 303-916-2189' } # Display contact info on lock screen
+##
+##
+## # Dictionaries =================================================================
+## #
+## # While there are two open pull requests (#24032 & #24808) to add dictionaries for the osx_defaults module Ansible does not currently support setting them so we have to use old fashioned defaults write commands instead.
+## #
+## dictionaries:
+##
+##   ## Dictionaries: Language & Region -------------------------------------------
+##
+##   - { domain: 'NSGlobalDomain', key: 'AppleFirstWeekday', type: 'dict', dict_string: 'gregorian 2' } # Set first day of the week to Monday
+##
+##   ## Dictionaries: Keyboard: Dictation -----------------------------------------
+##
+##   - { domain: 'com.apple.messageshelper.MessageController', key: 'SOInputLineSettings', type: 'dict-add', dict_string: 'automaticDashSubstitutionEnabled 1' } # Related to enable dictation
+##
+##   ## Dictionaries: Siri --------------------------------------------------------
+##
+##   - { domain: 'com.apple.assistant.backedup', key: 'Output Voice', type: 'dict', dict_string: 'Language en-GB' } # Set Siri to British voice
