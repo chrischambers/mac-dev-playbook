@@ -116,7 +116,42 @@ defaults:
       key: 'ShowStatusBar'
       type: bool
       value: true
-
+  # Hot corners:
+  # Possible values:
+  #  0: no-op
+  #  2: Mission Control
+  #  3: Show application windows
+  #  4: Desktop
+  #  5: Start screen saver
+  #  6: Disable screen saver
+  #  7: Dashboard
+  # 10: Put display to sleep
+  # 11: Launchpad
+  # 12: Notification Center
+  - name: Top Left corner - Screen saver
+    data:
+      domain: com.apple.dock
+      key: wvous-tl-corner
+      type: int
+      value: 5
+  - name: Top Right corner - Mission Control
+    data:
+      domain: com.apple.dock
+      key: wvous-tr-corner
+      type: int
+      value: 2
+  - name: Bottom Right corner - Application Windows
+    data:
+      domain: com.apple.dock
+      key: wvous-br-corner
+      type: int
+      value: 3
+  - name: Bottom Left corner - Desktop
+    data:
+      domain: com.apple.dock
+      key: wvous-bl-corner
+      type: int
+      value: 4
 
 dictionaries: []
 become_defaults: []
