@@ -18,3 +18,11 @@
     src.stat.isdir is defined and
     src.stat.isdir and
     dest.stat.symlink is not defined
+
+- name: Calibre configuration folder set to ~/.config/calibre
+  ansible.builtin.lineinfile:
+    path: "{{ ansible_env.HOME }}/Library/Preferences/calibre/macos-env.txt"
+    search_string: CALIBRE_CONFIG_DIRECTORY=~/.config/calibre
+    line: CALIBRE_CONFIG_DIRECTORY=~/.config/calibre
+    state: present
+    create: true
