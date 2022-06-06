@@ -185,3 +185,7 @@ This project was created by [Jeff Geerling](https://www.jeffgeerling.com/) (orig
 
 [badge-gh-actions]: https://github.com/geerlingguy/mac-dev-playbook/workflows/CI/badge.svg?event=push
 [link-gh-actions]: https://github.com/geerlingguy/mac-dev-playbook/actions?query=workflow%3ACI
+
+`xcode-select --install`
+`sudo xcodebuild -license`
+`/usr/sbin/softwareupdate --install-rosetta`
