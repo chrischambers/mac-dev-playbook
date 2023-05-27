@@ -16,6 +16,18 @@ defaults:
       key: 'NSAutomaticSpellingCorrectionEnabled'
       type: bool
       value: false
+  - name: Disable auto-capitalization
+    data:
+      domain: 'NSGlobalDomain'
+      key: 'NSAutomaticCapitalizationEnabled '
+      type: bool
+      value: false
+  - name: Disable full stop with double-space
+    data:
+      domain: 'NSGlobalDomain'
+      key: 'NSAutomaticPeriodSubstitutionEnabled'
+      type: bool
+      value: false
   # Dock:
   - name: Double clicking on App titlebar maximizes app window
     data:
@@ -71,7 +83,25 @@ defaults:
       key: 'showhidden'
       type: bool
       value: true
+  - name: Scale effect rather than genie on minimize
+    data:
+      domain: 'com.apple.dock'
+      key: 'mineffect'
+      type: string
+      value: scale
+  - name: Avoid showing recent applications in Dock
+    data:
+      domain: 'com.apple.dock'
+      key: 'show-recents'
+      type: bool
+      value: false
   # Finder
+  - name: Set default Finder view style as list view
+    data:
+      domain: 'com.apple.finder'
+      key: 'ShowRecentTags'
+      type: bool
+      value: false
   - name: Set default Finder view style as list view
     data:
       domain: 'com.apple.finder'
@@ -156,6 +186,13 @@ defaults:
       key: wvous-bl-corner
       type: int
       value: 4
+  # Systen Preferences
+  - name: Avoid categories - sort system preferences alphabetically
+    data:
+      domain: com.apple.systempreferences
+      key: ShowAllMode
+      type: bool
+      value: true
   # Network
   - name: Stop creating .DS_store files on network storage (plist only)
     data:
@@ -170,6 +207,13 @@ defaults:
       key: ScheduleFrequency
       type: int
       value: 1
+  # Screenshots
+  - name: Favour .jpg over .png (much smaller)
+    data:
+      domain: com.apple.screencapture
+      key: 'type'
+      type: string
+      value: png
   # Security
   - name: Require password on sleep/screensaver
     data:
