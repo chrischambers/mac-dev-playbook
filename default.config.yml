@@ -44,7 +44,7 @@ dockitems_persist:
     path: "/Applications/iTerm.app"
     pos: 1
   - name: Emacs
-    path: "/opt/homebrew/Cellar/emacs-plus@29/29.0.50/Emacs.app"
+    path: "/opt/homebrew/Cellar/emacs-plus@29/29.0.90/Emacs.app"
     pos: 2
   - name: "Brave Browser"
     path: "/Applications/Brave Browser.app"
@@ -167,7 +167,7 @@ homebrew_installed_packages:
 
   # Editing:
   # ----------------------------------------------------------------------
-  - {name: "d12frosted/emacs-plus/emacs-plus@29", install_options: "with-imagemagick,with-modern-mzaplotnik-icon,with-native-comp,with-no-frame-refocus"}
+  - {name: "d12frosted/emacs-plus/emacs-plus@29", install_options: "with-imagemagick,with-modern-mzaplotnik-icon,with-native-comp,with-no-frame-refocus,with-dbus"}
   - neovim
   - ditaa
   - plantuml
