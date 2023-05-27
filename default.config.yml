@@ -85,8 +85,13 @@ homebrew_cask_uninstalled_apps:
   - emacs
 
 homebrew_installed_packages:
+  ## Misc:
+  # ----------------------------------------------------------------------
+  - djvu2pdf
+
   # Programming:
   # ----------------------------------------------------------------------
+  - cmake
   - editorconfig
   - git
   - git-delta          # prettier diffing, esp. for git
@@ -170,6 +175,7 @@ homebrew_installed_packages:
   - {name: "d12frosted/emacs-plus/emacs-plus@29", install_options: "with-imagemagick,with-modern-mzaplotnik-icon,with-native-comp,with-no-frame-refocus,with-dbus"}
   - neovim
   - ditaa
+  - notmuch
   - plantuml
   - watchexec         # performance improvement: emacs w/ straight
 
