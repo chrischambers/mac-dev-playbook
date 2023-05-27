@@ -25,6 +25,9 @@
     - role: osx_defaults
       when: configure_osx
       tags: ['osx']
+    - role: ableton.nix
+      when: configure_nix
+      tags: ['nix']
 
   tasks:
     - import_tasks: tasks/sudoers.yml

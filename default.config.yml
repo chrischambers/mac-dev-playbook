@@ -5,6 +5,7 @@ configure_osx: true
 configure_dock: true
 configure_dotfiles: true
 configure_emacs: true
+configure_nix: true
 
 dotfiles_repo: "https://github.com/chrischambers/dots.git"
 chezmoi_user_home: "{{ ansible_env.HOME }}"
@@ -18,6 +19,8 @@ emacs_config_location: "{{ emacsen_directory }}/mine"
 
 ebooks_source_directory: "{{ ansible_env.HOME }}/Dropbox/ebooks"
 ebooks_destination_path: "{{ ansible_env.HOME }}/Ebooks"
+
+nix_user: "{{ ansible_env.USER }}"
 
 dockitems_remove:
   - Launchpad
