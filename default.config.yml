@@ -47,7 +47,7 @@ dockitems_persist:
     path: "/Applications/iTerm.app"
     pos: 1
   - name: Emacs
-    path: "/opt/homebrew/Cellar/emacs-plus@29/29.0.90/Emacs.app"
+    path: "/opt/homebrew/Cellar/emacs-plus@28/28.2/Emacs.app"
     pos: 2
   - name: "Brave Browser"
     path: "/Applications/Brave Browser.app"
@@ -100,6 +100,7 @@ homebrew_installed_packages:
   - git-delta          # prettier diffing, esp. for git
   - subversion         # required for some of the font casks, and legacy codebases
   # - node
+  - npm
   - ormolu             # haskell formatter
   - shellcheck         # shell script linter
   - yamllint
@@ -109,6 +110,11 @@ homebrew_installed_packages:
   - clojure/tools/clojure
   - leiningen
   - exercism
+  - borkdude/brew/clj-kondo
+
+  ## Haskell:
+  # ----------------------------------------------------------------------
+  - ghcup
 
   # Dotfiles:
   # ----------------------------------------------------------------------
@@ -175,10 +181,11 @@ homebrew_installed_packages:
 
   # Editing:
   # ----------------------------------------------------------------------
-  - {name: "d12frosted/emacs-plus/emacs-plus@29", install_options: "with-imagemagick,with-modern-mzaplotnik-icon,with-native-comp,with-no-frame-refocus,with-dbus"}
+  - {name: "d12frosted/emacs-plus/emacs-plus@28", install_options: "with-debug,with-imagemagick,with-modern-mzaplotnik-icon,with-native-comp,with-no-frame-refocus,with-no-titlebar-and-round-corners,with-dbus"}
   - neovim
   - ditaa
   - notmuch
+  - pandoc
   - plantuml
   - watchexec         # performance improvement: emacs w/ straight
 
@@ -291,7 +298,9 @@ gem_packages: []
 # - name: bundler
 #   state: present # present/absent/latest, default: present
 #   version: "~> 1.15.1" # default: N/A
-npm_packages: []
+npm_packages:
+  - js-beautify
+  - stylelint
 # - name: webpack
 #   state: present # present/absent/latest, default: present
 #   version: "^2.6" # default: N/A

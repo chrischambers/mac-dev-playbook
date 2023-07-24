@@ -25,7 +25,7 @@
     - role: osx_defaults
       when: configure_osx
       tags: ['osx']
-    - role: ableton.nix
+    - role: ansible-role-nix
       when: configure_nix
       tags: ['nix']
 
