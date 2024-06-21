@@ -181,7 +181,7 @@ homebrew_installed_packages:
 
   # Editing:
   # ----------------------------------------------------------------------
-  - {name: "d12frosted/emacs-plus/emacs-plus@28", install_options: "with-debug,with-imagemagick,with-modern-mzaplotnik-icon,with-native-comp,with-no-frame-refocus,with-no-titlebar-and-round-corners,with-dbus"}
+  - {name: "d12frosted/emacs-plus/emacs-plus@28", install_options: "with-debug,with-imagemagick,with-modern-mzaplotnik-icon,with-native-comp,with-no-frame-refocus"}
   - neovim
   - ditaa
   - notmuch
