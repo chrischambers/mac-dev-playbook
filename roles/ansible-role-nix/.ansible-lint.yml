@@ -1,0 +1,8 @@
+---
+exclude_paths:
+  - .ansible
+  - .venv
+  - molecule/*/converge.yml
+parseable: true
+skip_list:
+  - "empty-string-compare"
