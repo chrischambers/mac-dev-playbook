@@ -244,12 +244,6 @@ homebrew_installed_packages:
   # - transmission-cli  # torrent client
 
 homebrew_taps:
-  # - homebrew/bundle
-  # - homebrew/core
-  # - homebrew/cask
-  # - homebrew/cask-fonts
-  # - homebrew/cask-versions
-  # - homebrew/services
   - clojure/tools
   - d12frosted/emacs-plus
   - dskecse/tap              # mozart 2
