@@ -41,19 +41,20 @@ dockitems_remove:
   - Keynote
   - Numbers
   - Pages
+  - Freeform
 
 dockitems_persist:
   - name: iTerm
     path: "/Applications/iTerm.app"
     pos: 1
   - name: Emacs
-    path: "/opt/homebrew/Cellar/emacs-plus@28/28.2/Emacs.app"
+    path: "/opt/homebrew/Cellar/emacs-plus@29/29.3/Emacs.app"
     pos: 2
-  - name: "Brave Browser"
-    path: "/Applications/Brave Browser.app"
-    pos: 3
   - name: "Firefox Developer Edition"
     path: "/Applications/Firefox Developer Edition.app"
+    pos: 3
+  - name: "Brave Browser"
+    path: "/Applications/Brave Browser.app"
     pos: 4
   - name: "Tor Browser"
     path: "/Applications/Tor Browser.app"
@@ -73,6 +74,12 @@ dockitems_persist:
   - name: "System Preferences"
     path: "/System/Applications/System Preferences.app"
     pos: 10
+  - name: "Slack"
+    path: "/System/Applications/Slack.app"
+    pos: 11
+  - name: "LimeChat"
+    path: "/System/Applications/LimeChat.app"
+    pos: 12
 
 configure_sudoers: false
 sudoers_custom_config: ''
@@ -91,6 +98,14 @@ homebrew_installed_packages:
   ## Misc:
   # ----------------------------------------------------------------------
   - djvu2pdf
+
+  # OSX Upgrades:
+  # ----------------------------------------------------------------------
+  - alt-tab
+  - dockutil
+  - hiddenbar
+  - raycast
+  - time-out
 
   # Programming:
   # ----------------------------------------------------------------------
@@ -172,7 +187,7 @@ homebrew_installed_packages:
   ## Improved help facilities
   # ----------------------------------------------------------------------
   - cheat
-  - tldr
+  - tlrc # tldr via rust
 
   # Writing:
   # ----------------------------------------------------------------------
@@ -181,7 +196,7 @@ homebrew_installed_packages:
 
   # Editing:
   # ----------------------------------------------------------------------
-  - {name: "d12frosted/emacs-plus/emacs-plus@28", install_options: "with-debug,with-imagemagick,with-modern-mzaplotnik-icon,with-native-comp,with-no-frame-refocus"}
+  - {name: "d12frosted/emacs-plus/emacs-plus", install_options: "with-imagemagick,with-modern-mzaplotnik-icon,with-native-comp"}
   - neovim
   - ditaa
   - notmuch
@@ -242,7 +257,7 @@ homebrew_taps:
 
 homebrew_cask_appdir: /Applications
 homebrew_cask_apps:
-  - hpedrorodrigues/tools/dockutil   # temporary cask: required for sorting dock
+  - amethyst
 
   - brave-browser
   - firefox-developer-edition
