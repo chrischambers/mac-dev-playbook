@@ -71,14 +71,14 @@ dockitems_persist:
   - name: "App Store"
     path: "/System/Applications/App Store.app"
     pos: 9
-  - name: "System Preferences"
-    path: "/System/Applications/System Preferences.app"
+  - name: "System Settings"
+    path: "/System/Applications/System Settings.app"
     pos: 10
   - name: "Slack"
-    path: "/System/Applications/Slack.app"
+    path: "/Applications/Slack.app"
     pos: 11
   - name: "LimeChat"
-    path: "/System/Applications/LimeChat.app"
+    path: "/Applications/LimeChat.app"
     pos: 12
 
 configure_sudoers: false
