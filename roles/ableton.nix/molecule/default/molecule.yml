@@ -1,5 +1,4 @@
 ---
-prerun: false
 dependency:
   name: galaxy
 driver:
@@ -7,6 +6,7 @@ driver:
 platforms:
   - name: instance
     image: ubuntu:20.04
+    privileged: true
 provisioner:
   name: ansible
   log: true
