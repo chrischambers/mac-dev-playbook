@@ -1,4 +1,29 @@
 ---
+- name: Infer homebrew emacs-plus version
+  ansible.builtin.shell: "brew info emacs-plus --json | jq '.[0].versions.stable'"
+  register: emacs_version_info
+
+- ansible.builtin.set_fact:
+    emacs_version: "{{ emacs_version_info.stdout | trim('\"') }}"
+
+- ansible.builtin.set_fact:
+    emacs_major_version: "{{ emacs_version | splitext | first }}"
+
+- name: Construct homebrew's Emacs.app path
+  ansible.builtin.command:
+    cmd: echo /opt/homebrew/Cellar/emacs-plus@{{ emacs_major_version}}/{{ emacs_version }}/Emacs.app
+  register: emacs_homebrew_app_path
+
+- name: Symlink homebrew Emacs.app to /Applications
+  ansible.builtin.file:
+    src: "{{ emacs_homebrew_app_path }}"
+    dest: "/Applications/Emacs.app"
+    state: link
+  when: >
+    src.stat.isdir is defined and
+    src.stat.isdir and
+    dest.stat.symlink is not defined
+
 - name: Make sure emacsen directory is present
   ansible.builtin.file:
     path: "{{ emacsen_directory }}"

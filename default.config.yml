@@ -48,7 +48,7 @@ dockitems_persist:
     path: "/Applications/iTerm.app"
     pos: 1
   - name: Emacs
-    path: "/opt/homebrew/Cellar/emacs-plus@29/29.3/Emacs.app"
+    path: "/Applications/Emacs.app"
     pos: 2
   - name: "Firefox Developer Edition"
     path: "/Applications/Firefox Developer Edition.app"
