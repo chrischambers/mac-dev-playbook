@@ -9,20 +9,36 @@
 - ansible.builtin.set_fact:
     emacs_major_version: "{{ emacs_version | splitext | first }}"
 
-- name: Construct homebrew's Emacs.app path
-  ansible.builtin.command:
-    cmd: echo /opt/homebrew/Cellar/emacs-plus@{{ emacs_major_version}}/{{ emacs_version }}/Emacs.app
-  register: emacs_homebrew_app_path
+- name: Construct homebrew's Emacs.app root
+  ansible.builtin.set_fact:
+    homebrew_emacs_root: "/opt/homebrew/Cellar/emacs-plus@{{ emacs_major_version}}/{{ emacs_version }}"
 
 - name: Symlink homebrew Emacs.app to /Applications
   ansible.builtin.file:
-    src: "{{ emacs_homebrew_app_path }}"
+    src: "{{ homebrew_emacs_root }}/Emacs.app"
     dest: "/Applications/Emacs.app"
     state: link
   when: >
     src.stat.isdir is defined and
     src.stat.isdir and
     dest.stat.symlink is not defined
+
+- name: Create ~/bin directory
+  ansible.builtin.file:
+    path: "{{ emacs_user_home }}/bin"
+    state: directory
+
+- name: symlink homebrew bin/emacs to ~/bin
+  ansible.builtin.file:
+    src: "{{ homebrew_emacs_root }}/bin/emacs"
+    dest: "{{ emacs_user_home }}/bin/emacs"
+    state: link
+
+- name: Symlink homebrew bin/emacsclient to ~/bin
+  ansible.builtin.file:
+    src: "{{ homebrew_emacs_root }}/bin/emacsclient"
+    dest: "{{ emacs_user_home }}/bin/emacsclient"
+    state: link
 
 - name: Make sure emacsen directory is present
   ansible.builtin.file:
