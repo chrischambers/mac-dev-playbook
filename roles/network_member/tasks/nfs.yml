@@ -1,6 +1,6 @@
 ---
 - name: Setup /etc/auto_master to automount nfs share
-  # https://www.wdiaz.org/how-to-mount-nfs-share-on-mac/
+  # https://www.wdiaz.org/how-to-mount-nfs-share-on-mac/
   # https://lowhangingfruit.dev/2019-10-21/automount-nfs-on-macos/
   # https://gist.github.com/l422y/8697518
   tags:

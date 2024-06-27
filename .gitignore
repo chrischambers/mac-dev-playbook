@@ -1,7 +1,7 @@
 *.vagrant
 .DS_Store
 *.retry
-roles
-^roles/network_member
-^roles/osx_defaults
+roles/*
+!roles/network_member
+!roles/osx_defaults
 config.yml

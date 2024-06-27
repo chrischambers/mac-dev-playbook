@@ -11,12 +11,12 @@
 #   does not work on macOS.
 
 ## system
-- name: restart Finder
-  shell: killall Finder
+- name: Restart Finder
+  command: killall Finder
   listen: "restart macos preferences"
-- name: restart Dock
-  shell: killall Dock
+- name: Restart Dock
+  command: killall Dock
   listen: "restart macos preferences"
-- name: restart SystemUIServer
-  shell: killall SystemUIServer
+- name: Restart SystemUIServer
+  command: killall SystemUIServer
   listen: "restart macos preferences"

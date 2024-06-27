@@ -13,7 +13,7 @@
     backup: true
   with_items: "{{ local_network }}"
 
-- name: Debug {{ local_network }} variable
+- name: Debug variable {{ local_network }}
   import_tasks: debug.yml
 
 - name: NFS setup

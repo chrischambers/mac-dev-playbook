@@ -1,9 +1,9 @@
 ---
-# Sources:
+# Sources:
 #  - https://github.com/geerlingguy/dotfiles/blob/master/.osx
 #  - https://github.com/ricbra/dotfiles/blob/master/bin/setup_osx
 #  - https://github.com/ChristinWhite/superlumic-config/blob/master/roles/workstation-preferences/vars/main.yml
-defaults:
+osx_defaults_settings:
   - name: Dark Interface
     data:
       domain: 'NSGlobalDomain'
@@ -235,5 +235,5 @@ defaults:
       type: bool
       value: false
 
-dictionaries: []
-become_defaults: []
+osx_defaults_dictionaries: []
+osx_defaults_become: []

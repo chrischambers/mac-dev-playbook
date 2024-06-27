@@ -188,7 +188,7 @@ homebrew_installed_packages:
   ## Improved help facilities
   # ----------------------------------------------------------------------
   - cheat
-  - tlrc # tldr via rust
+  - tlrc               # tldr via rust
 
   # Writing:
   # ----------------------------------------------------------------------
@@ -311,6 +311,7 @@ gem_packages: []
 #   version: "~> 1.15.1" # default: N/A
 npm_packages:
   - js-beautify
+  - prettier
   - stylelint
 # - name: webpack
 #   state: present # present/absent/latest, default: present
