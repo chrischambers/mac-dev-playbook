@@ -113,6 +113,7 @@ homebrew_installed_packages:
   - editorconfig
   - git
   - git-delta          # prettier diffing, esp. for git
+  - gh                 # github CLI
   - subversion         # required for some of the font casks, and legacy codebases
   # - node
   - npm
@@ -217,6 +218,7 @@ homebrew_installed_packages:
 
   # Security:
   # ----------------------------------------------------------------------
+  - gpg
   - pass
   - pinentry-mac
 
