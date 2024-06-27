@@ -26,7 +26,7 @@
     - "{{ osx_defaults_become }}"
   notify: "restart macos preferences"
   become: true
-  ignore_errors: true
+  # ignore_errors: true
 
 # Set two dimensional dict defaults through shell commands
 - name: Set two dimensional dict defaults through defaults write

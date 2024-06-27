@@ -2,6 +2,7 @@
 homebrew_installed_packages:
   - autoconf
   - bash-completion
+  - chezmoi
   - gettext
   - sqlite
   - ssh-copy-id
