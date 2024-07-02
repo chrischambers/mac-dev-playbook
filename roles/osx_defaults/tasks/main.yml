@@ -1,5 +1,11 @@
 # Setup default preferences in macOS
-- name: Prepare backup script for OSX settings
+- name: Ensure ~/bin exists
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/bin"
+    state: directory
+    mode: "0700"
+
+- name: Place backup script for OSX settings in ~/bin
   ansible.builtin.template:
     src: backup_osx_settings.sh
     dest: "{{ ansible_env.HOME }}/bin"
