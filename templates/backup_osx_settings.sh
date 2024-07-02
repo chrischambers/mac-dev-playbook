@@ -12,12 +12,8 @@ bump_osx_defaults_version_number() {
 
 main() {
     mkdir -p "$backup_location"
-    while true; do
-      if [[ -f $target ]]; then
-        target=$(bump_osx_defaults_version_number "$target")
-      else
-        break
-      fi
+    while [[ -f $target ]]; do
+      target=$(bump_osx_defaults_version_number "$target")
     done
     defaults read > "$target"
 }
