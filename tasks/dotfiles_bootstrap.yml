@@ -1,4 +1,8 @@
 ---
-- name: Bootstrapping chezmoi with dotfiles
-  command:
-    cmd: "chezmoi init --apply --force {{ dotfiles_repo }}"
+- name: Initialise chemzoi
+  ansible.builtin.command:
+    cmd: "chezmoi init {{ dotfiles_repo }}"
+
+- name: Apply chezmoi to local system
+  ansible.builtin.command:
+    cmd: "chezmoi apply"

@@ -50,8 +50,7 @@
   become: true
   # ignore_errors: true
 
-# Set two dimensional dict defaults through shell commands
-- name: Set two dimensional dict defaults through defaults write
+- name: Set 2D (dictionary) defaults through defaults write
   command: defaults write '{{ item.domain }}' '{{ item.key }}' -{{ item.type }} {{ item.dict_string }}
   with_items:
     - "{{ osx_defaults_dictionaries }}"
