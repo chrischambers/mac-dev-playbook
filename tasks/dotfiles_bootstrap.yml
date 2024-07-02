@@ -1,4 +1,4 @@
 ---
 - name: Bootstrapping chezmoi with dotfiles
   command:
-    cmd: "chezmoi init --apply {{ dotfiles_repo }}"
+    cmd: "chezmoi init --apply --force {{ dotfiles_repo }}"
