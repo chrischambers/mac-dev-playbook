@@ -1,4 +1,13 @@
 ---
+homebrew_taps:
+  - d12frosted/emacs-plus
+
+homebrew_uninstalled_packages:
+  - emacs
+
+homebrew_cask_uninstalled_apps:
+  - emacs
+
 homebrew_installed_packages:
   - autoconf
   - bash-completion
@@ -11,6 +20,7 @@ homebrew_installed_packages:
   - pv
   - wget
   - wrk
+  - {name: "d12frosted/emacs-plus/emacs-plus", install_options: "with-imagemagick,with-modern-mzaplotnik-icon,with-native-comp"}
   - jq
 
 homebrew_cask_apps:
