@@ -1,44 +1,40 @@
 ---
-- name: Infer homebrew emacs-plus version
-  ansible.builtin.shell: "set -o pipefail && brew info emacs-plus --json | jq '.[0].versions.stable'"
-  register: emacs_version_info
+- name: Check if emacs-plus installed
+  ansible.builtin.command: "brew list -1 emacs-plus"
+  register: emacs_plus_installed_result
 
 - ansible.builtin.set_fact:
-    emacs_version: "{{ emacs_version_info.stdout | trim('\"') }}"
-
-- ansible.builtin.set_fact:
-    emacs_major_version: "{{ emacs_version | splitext | first }}"
-
-- name: Construct homebrew's Emacs.app root
-  ansible.builtin.set_fact:
-    homebrew_emacs_root: "/opt/homebrew/Cellar/emacs-plus@{{ emacs_major_version }}/{{ emacs_version }}"
+    emacs_plus_installed: "{{ emacs_plus_installed_result.rc }}"
 
 - name: Symlink homebrew Emacs.app to /Applications
   ansible.builtin.file:
-    src: "{{ homebrew_emacs_root }}/Emacs.app"
+    src: "{{ emacs_homebrew_root_path }}/Emacs.app"
     dest: "/Applications/Emacs.app"
     state: link
   when: >
+    emacs_plus_installed and
     src.stat.isdir is defined and
     src.stat.isdir and
     dest.stat.symlink is not defined
+
+- name: Symlink homebrew bin/emacs to ~/bin
+  ansible.builtin.file:
+    src: "{{ emacs_homebrew_root_path }}/bin/emacs"
+    dest: "{{ emacs_user_home }}/bin/emacs"
+    state: link
+  when: emacs_plus_installed
+
+- name: Symlink homebrew bin/emacsclient to ~/bin
+  ansible.builtin.file:
+    src: "{{ emacs_homebrew_root_path }}/bin/emacsclient"
+    dest: "{{ emacs_user_home }}/bin/emacsclient"
+    state: link
+  when: emacs_plus_installed
 
 - name: Create ~/bin directory
   ansible.builtin.file:
     path: "{{ emacs_user_home }}/bin"
     state: directory
-
-- name: Symlink homebrew bin/emacs to ~/bin
-  ansible.builtin.file:
-    src: "{{ homebrew_emacs_root }}/bin/emacs"
-    dest: "{{ emacs_user_home }}/bin/emacs"
-    state: link
-
-- name: Symlink homebrew bin/emacsclient to ~/bin
-  ansible.builtin.file:
-    src: "{{ homebrew_emacs_root }}/bin/emacsclient"
-    dest: "{{ emacs_user_home }}/bin/emacsclient"
-    state: link
 
 - name: Make sure emacsen directory is present
   ansible.builtin.file:
