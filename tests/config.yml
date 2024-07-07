@@ -11,6 +11,7 @@ homebrew_installed_packages:
   - pv
   - wget
   - wrk
+  - jq
 
 homebrew_cask_apps:
   - firefox
