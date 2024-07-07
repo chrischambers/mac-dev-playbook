@@ -18,10 +18,10 @@
     hour: "8"
     job: "{{ ansible_env.HOME }}/bin/backup_osx_settings.sh"
 
-- name: Run backup script for OSX defaults
+- name: Run backup script for OSX settings
   ansible.builtin.command: "{{ ansible_env.HOME }}/bin/backup_osx_settings.sh"
 
-- name: Write macOS defaults
+- name: Write OSX settings
   osx_defaults:
     domain: "{{ item.data.domain }}"
     key: "{{ item.data.key }}"
@@ -30,13 +30,13 @@
     value: "{{ item.data.value | default(omit) }}"
     state: "{{ item.data.state | default(omit) }}"
   with_items:
-    - "{{ osx_defaults_settings }}"
+    - "{{ osx_settings_simple }}"
   notify: "restart macos preferences"
   # ignore_errors: true
 
 # There are some settings, like those in /library/ that require escalated
 # privileges:
-- name: Write macOS defaults with escalated privileges
+- name: Write OSX settings with escalated privileges
   osx_defaults:
     domain: "{{ item.domain }}"
     key: "{{ item.key }}"
@@ -45,12 +45,12 @@
     value: "{{ item.value | default(omit) }}"
     state: "{{ item.state | default(omit) }}"
   with_items:
-    - "{{ osx_defaults_become }}"
+    - "{{ osx_settings_become }}"
   notify: "restart macos preferences"
   become: true
   # ignore_errors: true
 
-- name: Set 2D (dictionary) defaults through defaults write
+- name: Set 2D (dictionary) settings
   command: defaults write '{{ item.domain }}' '{{ item.key }}' -{{ item.type }} {{ item.dict_string }}
   with_items:
-    - "{{ osx_defaults_dictionaries }}"
+    - "{{ osx_settings_dictionaries }}"

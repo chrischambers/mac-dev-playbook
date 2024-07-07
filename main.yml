@@ -23,9 +23,9 @@
       when: configure_dock
       tags: ['dock']
     - network_member
-    - role: osx_defaults
-      when: configure_osx
-      tags: ['osx']
+    - role: osx_settings
+      when: configure_osx_settings
+      tags: ['settings']
     - role: ableton.nix
       when: configure_nix
       tags: ['nix']

@@ -3,7 +3,7 @@
 #  - https://github.com/geerlingguy/dotfiles/blob/master/.osx
 #  - https://github.com/ricbra/dotfiles/blob/master/bin/setup_osx
 #  - https://github.com/ChristinWhite/superlumic-config/blob/master/roles/workstation-preferences/vars/main.yml
-osx_defaults_settings:
+osx_settings_simple:
   - name: Dark Interface
     data:
       domain: 'NSGlobalDomain'
@@ -235,5 +235,5 @@ osx_defaults_settings:
       type: bool
       value: false
 
-osx_defaults_dictionaries: []
-osx_defaults_become: []
+osx_settings_dictionaries: []
+osx_settings_become: []

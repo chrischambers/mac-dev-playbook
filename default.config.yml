@@ -1,7 +1,7 @@
 ---
 downloads: ~/.ansible-downloads/
 
-configure_osx: true
+configure_osx_settings: true
 configure_dock: true
 configure_dotfiles: true
 configure_emacs: true
@@ -17,7 +17,7 @@ emacsen_directory: "{{ emacs_user_home }}/emacsen"
 emacs_config_repo: "git@github.com:chrischambers/emacs-latest.git"
 emacs_config_location: "{{ emacsen_directory }}/mine"
 
-ebooks_source_directory: "{{ ansible_env.HOME }}/Dropbox/ebooks"
+ebooks_source_directory: "{{ ansible_env.HOME }}/Dropbox/Ebooks"
 ebooks_destination_path: "{{ ansible_env.HOME }}/Ebooks"
 
 nix_user: "{{ ansible_env.USER }}"
