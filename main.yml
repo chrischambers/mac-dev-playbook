@@ -32,6 +32,9 @@
     - role: ableton.nix
       when: configure_nix
       tags: ['nix']
+    - role: extra_nix
+      when: configure_nix
+      tags: ['nix']
 
   tasks:
     - import_tasks: tasks/sudoers.yml

@@ -3,6 +3,7 @@
 *.retry
 roles/*
 !roles/emacs
+!roles/extra_nix
 !roles/network_member
 !roles/osx_defaults
 config.yml
