@@ -1,4 +1,9 @@
 ---
+- name: Create ~/bin directory
+  ansible.builtin.file:
+    path: "{{ emacs_user_home }}/bin"
+    state: directory
+
 - name: Check if emacs-plus installed
   ansible.builtin.command: "brew list -1 emacs-plus"
   register: emacs_plus_installed_result
@@ -30,11 +35,6 @@
     dest: "{{ emacs_user_home }}/bin/emacsclient"
     state: link
   when: emacs_plus_installed
-
-- name: Create ~/bin directory
-  ansible.builtin.file:
-    path: "{{ emacs_user_home }}/bin"
-    state: directory
 
 - name: Make sure emacsen directory is present
   ansible.builtin.file:
