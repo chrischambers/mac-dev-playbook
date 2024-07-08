@@ -1,20 +1,43 @@
 ---
-- name: Create temporary build directory
-  ansible.builtin.tempfile:
+- name: Check if nix-darwin flake.nix is present
+  ansible.builtin.stat:
+    path: "{{ ansible_env.HOME }}/.config/nix/flake.nix"
+  register: flake_nix_installed_result
+
+- ansible.builtin.set_fact:
+    flake_nix_installed: "{{ flake_nix_installed_result.rc }}"
+
+- name: Create ~/.config/nix if necessary
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/.config/nix"
     state: directory
-    suffix: build
-  register: temp_build_dir
+    mode: "0544"
+  when: not flake_nix_installed
 
-- name: Build nix-darwin installer
-  ansible.builtin.command:
-    cmd: "nix-build https://github.com/LnL7/nix-darwin/archive/master.tar.gz -A installer"
-    chdir: "{{ temp_build_dir.path }}"
+- name: Create flake.nix from template if required
+  ansible.builtin.template:
+    src: flake.nix
+    dest: "{{ ansible_env.HOME }}/.config/nix/flake.nix"
+  register: flake_nix_from_template_result
+  when: not flake_nix_installed
 
-- name: Execute nix-darwin installer
-  ansible.builtin.command: "{{ temp_build_dir.path }}/result/bin/darwin-installer"
+- ansible.builtin.set_fact:
+    flake_nix_from_template: "{{ flake_nix_from_template.rc | default(false) }}"
 
-# - name: Remove temporary build directory
-#   ansible.builtin.file:
-#     path: "{{ temp_build_dir.path }}"
-#     state: absent
-#   when: temp_build_dir.path is defined
+- name: Create git repo if flake.nix was created from template
+  # One of the stranger footguns when using Nix flakes is that all files
+  # referenced by a flake must be checked into source control.
+  ansible.builtin.shell: >
+    git init {{ ansible_env.HOME }}/.config/nix &&
+    git add flake.nix &&
+    git commit -m 'Add flake.nix'
+  when: flake_nix_from_template
+
+- name: Bootstrap nix-darwin from flake
+  ansible.builtin.command: >
+    nix run nix-darwin
+    --extra-experimental-features nix-command
+    --extra-experimental-features flakes
+    --
+    switch
+    --flake ~/.config/nix
