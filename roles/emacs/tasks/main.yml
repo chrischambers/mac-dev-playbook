@@ -65,7 +65,9 @@
     repo: "{{ chemacs_repo }}"
     dest: "{{ emacs_user_home }}/.emacs.d"
     version: master
-  when: not chemacs_git_folder.stat.exists
+  when: >
+    chemacs_git_folder.stat.exists is defined and
+    not chemacs_git_folder.stat.exists
 
 - name: "Emacs config already exists at {{ emacs_config_location }}?"
   ansible.builtin.stat:
@@ -77,7 +79,9 @@
     repo: "{{ emacs_config_repo }}"
     dest: "{{ emacs_config_location }}"
     version: master
-  when: not emacs_config.stat.exists
+  when: >
+    emacs_config.stat.exists is defined and
+    not emacs_config.stat.exists
 
 - name: Provide Chemacs profile via template
   ansible.builtin.template:
