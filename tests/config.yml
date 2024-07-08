@@ -26,3 +26,5 @@ homebrew_installed_packages:
 homebrew_cask_apps:
   - firefox
   - licecap
+
+emacs_config_repo: "git@github.com:purcell/emacs.d.git"
