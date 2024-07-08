@@ -2,36 +2,60 @@
 - name: Check if nix-darwin flake.nix is present
   ansible.builtin.stat:
     path: "{{ ansible_env.HOME }}/.config/nix/flake.nix"
-  register: flake_nix_installed_result
+  register: flake_nix_stat_result
 
 - ansible.builtin.set_fact:
-    flake_nix_installed: "{{ flake_nix_installed_result.rc }}"
+    flake_nix_already_installed: "{{ flake_nix_stat_result.stat.exists }}"
 
 - name: Create ~/.config/nix if necessary
   ansible.builtin.file:
     path: "{{ ansible_env.HOME }}/.config/nix"
     state: directory
-    mode: "0544"
-  when: not flake_nix_installed
+    mode: "0755"
+  when: not flake_nix_already_installed
 
 - name: Create flake.nix from template if required
   ansible.builtin.template:
     src: flake.nix
     dest: "{{ ansible_env.HOME }}/.config/nix/flake.nix"
   register: flake_nix_from_template_result
-  when: not flake_nix_installed
+  when: not flake_nix_already_installed
+
+- name: Print return information from the previous task
+  ansible.builtin.debug:
+    var: flake_nix_from_template_result
+    verbosity: 2
 
 - ansible.builtin.set_fact:
-    flake_nix_from_template: "{{ flake_nix_from_template.rc | default(false) }}"
+    flake_nix_built_from_template: "{{ flake_nix_from_template_result.changed }}"
+
+- name: Print return information from the previous task
+  ansible.builtin.debug:
+    var: flake_nix_built_from_template
+    verbosity: 2
+
+- name: Check if ~/.config/nix is a git repo
+  ansible.builtin.stat:
+    path: "{{ ansible_env.HOME }}/.config/nix/.git"
+  register: nix_config_git_stat_result
+
+- ansible.builtin.set_fact:
+    nix_config_is_git_repo: "{{ nix_config_git_stat_result.stat.exists }}"
+
+- name: Print return information from the previous task
+  ansible.builtin.debug:
+    var: nix_config_is_git_repo
+    verbosity: 2
 
 - name: Create git repo if flake.nix was created from template
   # One of the stranger footguns when using Nix flakes is that all files
   # referenced by a flake must be checked into source control.
   ansible.builtin.shell: >
-    git init {{ ansible_env.HOME }}/.config/nix &&
+    cd {{ ansible_env.HOME }}/.config/nix &&
+    git init &&
     git add flake.nix &&
     git commit -m 'Add flake.nix'
-  when: flake_nix_from_template
+  when: flake_nix_built_from_template and not nix_config_is_git_repo
 
 - name: Bootstrap nix-darwin from flake
   ansible.builtin.command: >
@@ -41,3 +65,4 @@
     --
     switch
     --flake ~/.config/nix
+  when: not flake_nix_already_installed
