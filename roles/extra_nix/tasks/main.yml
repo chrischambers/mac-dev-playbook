@@ -1,5 +1,20 @@
 ---
-- name: Install nix-darwin
-  ansible.builtin.command: >
-    nix-build https://github.com/LnL7/nix-darwin/archive/master.tar.gz
-    -A installer ./result/bin/darwin-installer"
+- name: Create temporary build directory
+  ansible.builtin.tempfile:
+    state: directory
+    suffix: build
+  register: temp_build_dir
+
+- name: Build nix-darwin installer
+  ansible.builtin.command:
+    cmd: "nix-build https://github.com/LnL7/nix-darwin/archive/master.tar.gz -A installer"
+    chdir: "{{ temp_build_dir.path }}"
+
+- name: Execute nix-darwin installer
+  ansible.builtin.command: "{{ temp_build_dir.path }}/result/bin/darwin-installer"
+
+# - name: Remove temporary build directory
+#   ansible.builtin.file:
+#     path: "{{ temp_build_dir.path }}"
+#     state: absent
+#   when: temp_build_dir.path is defined
