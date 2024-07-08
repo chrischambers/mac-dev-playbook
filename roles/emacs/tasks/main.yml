@@ -7,6 +7,7 @@
 - name: Check if emacs-plus installed
   ansible.builtin.command: "brew list -1 emacs-plus"
   register: emacs_plus_installed_result
+  ignore_errors: true
 
 - ansible.builtin.set_fact:
     emacs_plus_installed: "{{ emacs_plus_installed_result.rc }}"
