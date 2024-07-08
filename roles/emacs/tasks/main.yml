@@ -32,14 +32,22 @@
     src: "{{ emacs_homebrew_root_path }}/bin/emacs"
     dest: "{{ emacs_user_home }}/bin/emacs"
     state: link
-  when: emacs_plus_installed
+  when: >
+    emacs_plus_installed and
+    src.stat.exists is defined and
+    src.stat.exists and
+    dest.stat.symlink is not defined
 
 - name: Symlink homebrew bin/emacsclient to ~/bin
   ansible.builtin.file:
     src: "{{ emacs_homebrew_root_path }}/bin/emacsclient"
     dest: "{{ emacs_user_home }}/bin/emacsclient"
     state: link
-  when: emacs_plus_installed
+  when: >
+    emacs_plus_installed and
+    src.stat.exists is defined and
+    src.stat.exists and
+    dest.stat.symlink is not defined
 
 - name: Make sure emacsen directory is present
   ansible.builtin.file:
