@@ -64,7 +64,7 @@
   ansible.builtin.git:
     repo: "{{ chemacs_repo }}"
     dest: "{{ emacs_user_home }}/.emacs.d"
-    version: master
+    version: main
   when: >
     chemacs_git_folder.stat.exists is defined and
     not chemacs_git_folder.stat.exists
