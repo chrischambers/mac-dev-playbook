@@ -5,12 +5,16 @@
     state: directory
 
 - name: Check if emacs-plus installed
-  ansible.builtin.command: "brew list -1 emacs-plus"
-  register: emacs_plus_installed_result
-  ignore_errors: true
-
-- ansible.builtin.set_fact:
-    emacs_plus_installed: "{{ emacs_plus_installed_result.rc }}"
+  block:
+    - name: "Run homebrew command to check emacs-plus installed"
+      ansible.builtin.command: "brew list -1 emacs-plus"
+    - name: "Store successful result"
+      ansible.builtin.set_fact:
+        emacs_plus_installed: true
+  rescue:
+    - name: "Store unsuccessful result"
+      ansible.builtin.set_fact:
+        emacs_plus_installed: false
 
 - name: Symlink homebrew Emacs.app to /Applications
   ansible.builtin.file:
