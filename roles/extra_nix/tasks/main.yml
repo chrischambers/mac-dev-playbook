@@ -64,5 +64,5 @@
     --extra-experimental-features flakes
     --
     switch
-    --flake ~/.config/nix
+    --flake {{ ansible_env.HOME }}/.config/nix
   when: not flake_nix_already_installed
