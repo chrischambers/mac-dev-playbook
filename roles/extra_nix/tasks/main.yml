@@ -59,7 +59,8 @@
 
 - name: Bootstrap nix-darwin from flake
   ansible.builtin.command: >
-    nix run nix-darwin
+    /nix/var/nix/profiles/default/bin/nix
+    run nix-darwin
     --extra-experimental-features nix-command
     --extra-experimental-features flakes
     --
