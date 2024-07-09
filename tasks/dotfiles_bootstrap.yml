@@ -1,7 +1,7 @@
 ---
 - name: Initialise chemzoi
   ansible.builtin.command:
-    cmd: "chezmoi init {{ dotfiles_repo }}"
+    cmd: "chezmoi init --promptDefaults {{ dotfiles_repo }}"
 
 - name: Apply chezmoi to local system
   ansible.builtin.command:
