@@ -16,7 +16,7 @@
         services.nix-daemon.enable = true;
         # Necessary for using flakes on this system.
         nix.settings.experimental-features = "nix-command flakes repl-flake";
-
+        nix.settings.extra-platforms = [ "aarch64-darwin" "x86_64-darwin" ];
         system.configurationRevision = self.rev or self.dirtyRev or null;
 
         # Used for backwards compatibility. please read the changelog
@@ -25,7 +25,7 @@
 
         # The platform the configuration will be used on.
         # If you're on an Intel system, replace with "x86_64-darwin"
-        nixpkgs.hostPlatform = "aarch64-darwin";
+        nixpkgs.hostPlatform = {% if ansible_architecture == "x86_64" %}"x86_64-darwin"{% else %}"aarch64-darwin"{% endif %};
 
         # Declare the user that will be running `nix-darwin`.
         users.users.{{ nix_user }} = {
