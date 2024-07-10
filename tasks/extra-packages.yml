@@ -8,6 +8,7 @@
   loop: "{{ composer_packages }}"
 
 - name: Install global NPM packages.
+  when: npm_packages
   block:
     - name: Install Node via homebrew if there are NPM packages to install
       community.general.homebrew:
@@ -23,7 +24,6 @@
         global: true
         executable: "{{ item.executable | default(omit) }}"
       loop: "{{ npm_packages }}"
-  when: npm_packages
 
 - name: Install global Pip packages.
   pip:
