@@ -14,6 +14,12 @@
     mode: "0755"
   when: not flake_nix_already_installed
 
+- name: Create nix.conf from template if required
+  ansible.builtin.template:
+    src: nix.conf
+    dest: "{{ ansible_env.HOME }}/.config/nix/nix.conf"
+  when: not flake_nix_already_installed
+
 - name: Create flake.nix from template if required
   ansible.builtin.template:
     src: flake.nix
