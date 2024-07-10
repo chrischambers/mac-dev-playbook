@@ -20,6 +20,7 @@
 
 - name: Run backup script for OSX settings
   ansible.builtin.command: "{{ ansible_env.HOME }}/bin/backup_osx_settings.sh"
+  changed_when: False
 
 - name: Write OSX settings
   osx_defaults:

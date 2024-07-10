@@ -1,21 +1,18 @@
 #!/bin/bash
 
+# Create a backup for settings iff no other backup has run in the previous hour.
+
 set -x
 
 backup_location="{{ ansible_env.HOME }}/backups/osx_settings/"
-filename="$(date '+%Y-%m-%d').defaults.1"
+filename="$(date '+%Y-%m-%d-%H')"
 target="${backup_location}/${filename}"
-
-bump_osx_settings_version_number() {
-  echo "$(echo "$1" | awk -F. -v OFS=. '{$NF += 1 ; print}')"
-}
 
 main() {
     mkdir -p "$backup_location"
-    while [[ -f $target ]]; do
-      target=$(bump_osx_settings_version_number "$target")
-    done
-    defaults read > "$target"
+    if [[ ! -f $target ]]; then
+      defaults read > "$target"
+    fi
 }
 
 main
